@@ -1,13 +1,13 @@
-// src/routes/senhas.ts
+
 import { Router, Request, Response } from 'express';
 import { gerarSenha } from '../utils/geradorSenha';
 
 const router = Router();
 
-// Array global para armazenar senhas (simplificado, em memória)
+do, em memória)
 let senhas: { id: number; senha: string; criadoEm: string; atualizadoEm?: string }[] = [];
 
-// CREATE: Cria uma nova senha
+/
 router.post('/', (req: Request, res: Response) => {
     const { length = 8, incluirNumeros = true, incluirSimbolos = false } = req.body;
     const novaSenha = {
@@ -19,12 +19,12 @@ router.post('/', (req: Request, res: Response) => {
     res.status(201).json({ message: 'Senha criada com sucesso', senha: novaSenha });
 });
 
-// READ: Retorna todas as senhas
+
 router.get('/', (req: Request, res: Response) => {
     res.json(senhas);
 });
 
-// UPDATE: Atualiza uma senha por ID
+
 router.put('/:id', (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     const { length = 8, incluirNumeros = true, incluirSimbolos = false } = req.body;
@@ -38,7 +38,7 @@ router.put('/:id', (req: Request, res: Response) => {
     }
 });
 
-// DELETE: Deleta uma senha por ID
+
 router.delete('/:id', (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
     const novasSenhas = senhas.filter(item => item.id !== id);
